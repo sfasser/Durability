@@ -26,4 +26,44 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="34dp" />
 
+    <TextView
+        android:id="@+id/txtProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/scan_content"
+        android:layout_centerVertical="true"
+        android:text="Produkt"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtProduct"
+        android:layout_below="@+id/txtProduct"
+        android:layout_marginTop="11dp"
+        android:text="Kategorie"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtCategory"
+        android:layout_below="@+id/txtCategory"
+        android:layout_marginTop="34dp"
+        android:text="Datum"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/addDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtDate"
+        android:layout_alignStart="@+id/button"
+        android:text="Hinzufügen" />
+
 </RelativeLayout>

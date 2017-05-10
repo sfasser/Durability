@@ -1,5 +1,6 @@
 package ch.hslu.durability.mobpro.durability;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -59,4 +60,5 @@ public class AddActivity extends Activity implements OnClickListener {
         }
 
     }
+
 }
