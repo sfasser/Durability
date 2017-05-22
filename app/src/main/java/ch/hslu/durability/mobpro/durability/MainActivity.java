@@ -37,9 +37,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         listProducts = (ListView)findViewById(R.id.listProducts);
 
+        DatabaseHandler db = new DatabaseHandler(this);
+        SQLiteDatabase db1 = db.getWritableDatabase();
+
+        Cursor todoCursor = db1.rawQuery("SELECT date, name FROM tbl_myproducts", null);
+        TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor);
+
+        listProducts.setAdapter(todoAdapter);
+/*
         // TodoDatabaseHandler is a SQLiteOpenHelper class connecting to SQLite
         DBHelper handler = new DBHelper(this);
         // Get access to the underlying writeable database
@@ -51,11 +58,11 @@ public class MainActivity extends AppCompatActivity {
         TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor);
         // Attach cursor adapter to the ListView
         listProducts.setAdapter(todoAdapter);
-
+*/
     }
 
 
-
+/*
 
     public class DBHelper extends SQLiteOpenHelper {
         private static final String DATABASE_NAME = "MyProducts";
