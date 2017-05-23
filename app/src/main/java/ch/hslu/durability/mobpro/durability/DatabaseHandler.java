@@ -37,6 +37,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
                 + KEY_DATE + " DATE" + ")";
         db.execSQL(CREATE_PRODUCTS_TABLE);
+        String INSERT_PRODUCTS = "INSERT INTO " + TABLE_PRODUCTS + "(" + KEY_NAME + ", " + KEY_DATE + ") VALUES ('Testproduct1', '2014-11-22 13:23:44.657')";
+        db.execSQL(INSERT_PRODUCTS);
     }
 
     // Upgrading database

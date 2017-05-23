@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         listProducts = (ListView)findViewById(R.id.listProducts);
 
-        DatabaseHandler db = new DatabaseHandler(this);
-        SQLiteDatabase db1 = db.getWritableDatabase();
+        DatabaseHandler handler = new DatabaseHandler(this);
+        SQLiteDatabase db = handler.getWritableDatabase();
 
-        Cursor todoCursor = db1.rawQuery("SELECT date, name FROM tbl_myproducts", null);
+        Cursor todoCursor = db.rawQuery("SELECT date, name FROM products", null);
         TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor);
 
         listProducts.setAdapter(todoAdapter);
