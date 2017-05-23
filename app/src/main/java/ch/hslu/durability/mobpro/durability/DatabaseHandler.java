@@ -1,13 +1,10 @@
 package ch.hslu.durability.mobpro.durability;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 /**
  * Created by Sandro Fasser on 22.05.2017.
@@ -49,6 +46,12 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 
         // Create tables again
         onCreate(db);
+    }
+
+    public void save (String name, Date date) {
+        //use same db
+        //insert name and date
+        //db.execSQL
     }
 
 }
