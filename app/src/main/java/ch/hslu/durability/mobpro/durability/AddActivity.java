@@ -47,8 +47,6 @@ public class AddActivity extends Activity implements OnClickListener {
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    private TextView BarCodeNumber;
-
     public String scanContent = "";
 
     String url ="";
@@ -60,7 +58,6 @@ public class AddActivity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_add);
 
         scanBtn = (Button)findViewById(R.id.button);
-        BarCodeNumber = (TextView)findViewById(R.id.scan_content);
         date = (TextView) findViewById(R.id.date);
         txtProduct = (TextView) findViewById(R.id.txtProduct);
 
@@ -87,10 +84,7 @@ public class AddActivity extends Activity implements OnClickListener {
 
         if (scanningResult != null) {
             scanContent = scanningResult.getContents();
-
-            //BarCodeNumber.setText("Barcode Nummer: " + scanContent);
             searchBarcode(scanContent);
-
         } else{
             Toast toast = Toast.makeText(getApplicationContext(),
                     "No scan data received!", Toast.LENGTH_SHORT);
@@ -106,7 +100,6 @@ public class AddActivity extends Activity implements OnClickListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private void run() throws IOException{
@@ -143,7 +136,6 @@ public class AddActivity extends Activity implements OnClickListener {
                         }
                     }
                 });
-
             }
         });
     }
@@ -164,7 +156,6 @@ public class AddActivity extends Activity implements OnClickListener {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
         });
         alert.show();
@@ -230,9 +221,7 @@ public class AddActivity extends Activity implements OnClickListener {
             year_x = year;
             month_x = monthOfYear + 1;
             day_x = dayOfMonth;
-
             date.setText(day_x + "." + month_x + "." + year_x);
-
         }
     };
 }

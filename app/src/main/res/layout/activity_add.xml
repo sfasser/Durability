@@ -11,19 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/scan_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/txtProduct"
@@ -40,18 +30,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.24"
+        android:layout_weight="0.07"
         android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/txtDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_weight="0.5"
-            android:text="Datum"
-            android:textSize="24sp"
-            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/date"
@@ -59,7 +39,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_weight="2"
-            android:textSize="24sp" />
+            android:paddingLeft="10dp"
+            android:text="Datum"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/addDate"
@@ -67,6 +50,7 @@
             android:layout_height="62dp"
             android:layout_weight="0.21"
             android:clickable="true"
+            app:backgroundTint="@color/colorPrimary"
             app:fabSize="mini"
             app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
@@ -74,14 +58,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="385dp"
         android:layout_gravity="end"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_weight="0.71">
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="Speichern" />
 
@@ -89,6 +75,7 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="Scanning" />
     </LinearLayout>
