@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="categories">
+        <item>Früchte</item>
+        <item>Gemüse</item>
+        <item>Milch</item>
+        <item>Käseprodukte</item>
+        <item>Fleisch</item>
+        <item>Fisch</item>
+        <item>Gewürze</item>
+        <item>Fertigprodukte</item>
+        <item>Tiefkühlprodukte</item>
+        <item>Gemüse</item>
+        <item>Süssigkeiten</item>
+        <item>Getränke</item>
+    </string-array>
+
+</resources>

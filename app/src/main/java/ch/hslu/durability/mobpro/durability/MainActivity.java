@@ -1,31 +1,10 @@
 package ch.hslu.durability.mobpro.durability;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CursorAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         listProducts = (ListView)findViewById(R.id.listProducts);
@@ -46,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor);
 
         listProducts.setAdapter(todoAdapter);
+        */
 /*
         // TodoDatabaseHandler is a SQLiteOpenHelper class connecting to SQLite
         DBHelper handler = new DBHelper(this);
