@@ -235,5 +235,4 @@ public class AddActivity extends Activity implements OnClickListener {
 
         }
     };
-
 }
