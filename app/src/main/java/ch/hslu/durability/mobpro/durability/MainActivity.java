@@ -1,131 +1,41 @@
 package ch.hslu.durability.mobpro.durability;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView listProducts;
+    private DBManager dbManager;
+    private ListView listView;
+    private SimpleCursorAdapter adapter;
+
+    final String[] from = new String[]{DatabaseHandler.KEY_ID, DatabaseHandler.KEY_NAME, DatabaseHandler.KEY_DATE};
+
+    final int[] to = new int[]{R.id.id, R.id.name, R.id.date};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        listProducts = (ListView)findViewById(R.id.listProducts);
 
-        DatabaseHandler handler = new DatabaseHandler(this);
-        SQLiteDatabase db = handler.getWritableDatabase();
+        dbManager = new DBManager(this);
+        dbManager.open();
+        Cursor cursor = dbManager.fetch();
 
-        Cursor todoCursor = db.rawQuery("SELECT date, name FROM products", null);
-        TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor);
+        listView = (ListView) findViewById(R.id.list_view);
+        listView.setEmptyView(findViewById(R.id.empty));
 
-        listProducts.setAdapter(todoAdapter);
-        */
-/*
-        // TodoDatabaseHandler is a SQLiteOpenHelper class connecting to SQLite
-        DBHelper handler = new DBHelper(this);
-        // Get access to the underlying writeable database
-        SQLiteDatabase db = handler.getWritableDatabase();
-        // Query for items from the database and get a cursor back
-        Cursor todoCursor = db.rawQuery("SELECT date, name FROM tbl_myproducts", null);
+        adapter = new SimpleCursorAdapter(this, R.layout.activity_view_record, cursor, from, to, 0);
+        adapter.notifyDataSetChanged();
 
-        // Setup cursor adapter using cursor from last step
-        TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor);
-        // Attach cursor adapter to the ListView
-        listProducts.setAdapter(todoAdapter);
-*/
+        listView.setAdapter(adapter);
+
     }
-
-
-/*
-
-    public class DBHelper extends SQLiteOpenHelper {
-        private static final String DATABASE_NAME = "MyProducts";
-        private static final int DATABASE_VERSION = 1;
-
-        public DBHelper(final Context context){
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        }
-
-        @Override
-        public void onCreate(final SQLiteDatabase db){
-            db.execSQL("CREATE TABLE [IF NOT EXISTS] tbl_myproducts (date DATE NOT NULL, name TEXT NOT NULL, id INTEGER PRIMARY KEY;)");
-            db.execSQL("INSERT INTO tbl_myproducts (date, name) VALUES ('fred','jan 1 2009 13:22:15');");
-        }
-
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
-    }
-
-
-
-    public class TodoCursorAdapter extends CursorAdapter {
-        public TodoCursorAdapter(Context context, Cursor cursor) {
-            super(context, cursor, 0);
-        }
-
-        // The newView method is used to inflate a new view and return it,
-        // you don't bind any data to the view at this point.
-        @Override
-        public View newView(Context context, Cursor cursor, ViewGroup parent) {
-            return LayoutInflater.from(context).inflate(R.layout.myproducts, parent, false);
-        }
-
-        // The bindView method is used to bind all data to a given view
-        // such as setting the text on a TextView.
-        @Override
-        public void bindView(View view, Context context, Cursor cursor) {
-            // Find fields to populate in inflated template
-            TextView tvBody = (TextView) view.findViewById(R.id.tvBody);
-            TextView tvPriority = (TextView) view.findViewById(R.id.tvPriority);
-            // Extract properties from cursor
-            String body = cursor.getString(cursor.getColumnIndexOrThrow("body"));
-            int priority = cursor.getInt(cursor.getColumnIndexOrThrow("priority"));
-            // Populate fields with extracted properties
-            tvBody.setText(body);
-            tvPriority.setText(String.valueOf(priority));
-        }
-    }
-
-    /*   public class DbAdapter{
-        private final DBHelper dbHelper;
-        private SQLiteDatabase db;
-
-        public DbAdapter(final Context context){
-            dbHelper = new DBHelper(context);
-        }
-
-        public void open(){
-            if(db == null || !db.isOpen()){
-                db = dbHelper.getWritableDatabase();
-                try {
-                    Cursor c = db.rawQuery("SELECT date, name FROM tbl_myproducts", null);
-
-                    if (c != null ) {
-                        if  (c.moveToFirst()) {
-                            do {
-                                String firstName = c.getString(c.getColumnIndex("name"));
-                                int date = c.getInt(c.getColumnIndex("date"));
-                            }while (c.moveToNext());
-                        }
-                    }
-                } catch (SQLiteException se ) {
-                    Log.e(getClass().getSimpleName(), "Could not create or Open the database");
-                } finally {
-                    db.close();
-                }
-            }
-        }
-        public void close(){
-            dbHelper.close();
-        }
-    }
-*/
 
 
     public void StartAddActivity(View Button) {

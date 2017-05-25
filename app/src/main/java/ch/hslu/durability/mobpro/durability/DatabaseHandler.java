@@ -13,15 +13,15 @@ import java.util.Date;
 public class DatabaseHandler extends SQLiteOpenHelper{
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "MyProducts";
+    private static final String DATABASE_NAME = "MYPRODUCTS";
 
     // Contacts table name
-    private static final String TABLE_PRODUCTS = "products";
+    public static final String TABLE_PRODUCTS = "PRODUCTS";
 
     // Contacts Table Columns names
-    private static final String KEY_ID = "id";
-    private static final String KEY_NAME = "name";
-    private static final String KEY_DATE = "date";
+    public static final String KEY_ID = "_id";
+    public static final String KEY_NAME = "name";
+    public static final String KEY_DATE = "date";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -31,10 +31,10 @@ public class DatabaseHandler extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + TABLE_PRODUCTS + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_DATE + " DATE" + ")";
+                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT NOT NULL,"
+                + KEY_DATE + " TEXT" + ")";
         db.execSQL(CREATE_PRODUCTS_TABLE);
-        String INSERT_PRODUCTS = "INSERT INTO " + TABLE_PRODUCTS + "(" + KEY_NAME + ", " + KEY_DATE + ") VALUES ('Testproduct1', '2014-11-22 13:23:44.657')";
+        String INSERT_PRODUCTS = "INSERT INTO " + TABLE_PRODUCTS + "(" + KEY_NAME + ", " + KEY_DATE + ") VALUES ('Testproduct1', '240517')";
         db.execSQL(INSERT_PRODUCTS);
     }
 
@@ -47,11 +47,10 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         // Create tables again
         onCreate(db);
     }
-
-    public void save (String name, Date date) {
+    /*public void save (String name, Date date) {
         //use same db
         //insert name and date
         //db.execSQL
-    }
+    }*/
 
 }
