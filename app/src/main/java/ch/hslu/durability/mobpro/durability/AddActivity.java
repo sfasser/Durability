@@ -35,15 +35,20 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import static ch.hslu.durability.mobpro.durability.R.id.id;
+
 public class AddActivity extends Activity implements OnClickListener {
 
     private FloatingActionButton addButton;
     private Button scanBtn;
+    private Button saveBtn;
     private TextView txtProduct;
     private int year_x, month_x, day_x;
-    private TextView date;
+    private TextView txtdate;
     static final int DIALOG_ID = 0;
     private final String apikey = "8d1e7de97777b8cc0611d5327a8a04c3";
+
+    private DBManager dbManager;
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -58,15 +63,23 @@ public class AddActivity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_add);
 
         scanBtn = (Button)findViewById(R.id.button);
-        date = (TextView) findViewById(R.id.date);
+        saveBtn = (Button)findViewById(R.id.btnSave);
+        txtdate = (TextView) findViewById(R.id.date);
         txtProduct = (TextView) findViewById(R.id.txtProduct);
 
+        dbManager = new DBManager(this);
+        dbManager.open();
+
         scanBtn.setOnClickListener(this);
+        saveBtn.setOnClickListener(this);
+
 
         final Calendar cal = Calendar.getInstance();
         year_x = cal.get(Calendar.YEAR);
         month_x = cal.get(Calendar.MONTH);
         day_x = cal.get(Calendar.DAY_OF_MONTH);
+
+
 
         showDialogOnButtonClick();
     }
@@ -76,6 +89,18 @@ public class AddActivity extends Activity implements OnClickListener {
         if(v.getId()==R.id.button) {
             IntentIntegrator scanIntegrator = new IntentIntegrator(this);
             scanIntegrator.initiateScan();
+        }
+
+        if(v.getId()==R.id.btnSave) {
+            final String name = txtProduct.getText().toString();
+            final String date = txtdate.getText().toString();
+
+            dbManager.insert(name, date);
+
+            Intent main = new Intent(AddActivity.this, MainActivity.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            startActivity(main);
         }
     }
 
@@ -221,7 +246,7 @@ public class AddActivity extends Activity implements OnClickListener {
             year_x = year;
             month_x = monthOfYear + 1;
             day_x = dayOfMonth;
-            date.setText(day_x + "." + month_x + "." + year_x);
+            txtdate.setText(day_x + "." + month_x + "." + year_x);
         }
     };
 }
