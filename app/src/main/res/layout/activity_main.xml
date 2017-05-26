@@ -34,15 +34,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Die Liste ist leer" />
+            android:text="Die Liste ist leer, Sie haben noch keine Produkte erfasst, klicken Sie auf den Button unten rechts um ein Produkt zu erfassen" />
 
         <ListView
             android:id="@+id/list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:dividerHeight="10dp"
+            android:dividerHeight="3dp"
             android:headerDividersEnabled="false"
-            android:padding="10dp"></ListView>
+            android:padding="10dp">
+
+        </ListView>
 
     </LinearLayout>
 

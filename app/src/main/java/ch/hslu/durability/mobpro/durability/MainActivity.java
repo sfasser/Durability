@@ -103,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        startService(new Intent(this, NotificationService.class));
+
     }
 
     public void StartAddActivity(View Button) {
