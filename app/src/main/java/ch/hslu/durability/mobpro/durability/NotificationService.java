@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 import static android.content.ContentValues.TAG;
 
@@ -32,7 +31,7 @@ public class NotificationService extends Service {
         super.onStart(intent, startId);
         Log.d(TAG, "Service started");
         //alarm.setAlarm(this);
-        Notifi(this, "Hallo wie gehts");
+        Notifi(this, "Eines deiner Produkte läuft bald ab!");
     }
 
 
@@ -41,7 +40,7 @@ public class NotificationService extends Service {
         // TODO Auto-generated method stub
         super.onDestroy();
         Log.d(TAG, "Service destroyed");
-        Toast.makeText(this, "Alarm zerstört !!!!!!!!!!", Toast.LENGTH_LONG).show(); // For example
+        //Toast.makeText(this, "Alarm zerstört !!!!!!!!!!", Toast.LENGTH_LONG).show(); // For example
     }
 
     public void Notifi(Context context, String Nachricht){
@@ -51,10 +50,12 @@ public class NotificationService extends Service {
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.ic_delete_forever_black_24dp)
-                        .setContentTitle("App XY")
+                        .setContentTitle("Produkt verbrauchen")
                         .setOngoing(true)
                         .setContentIntent(pi)
-                        .setContentText(Nachricht);
+                        .setContentText(Nachricht)
+                        .setAutoCancel(true)
+                        .setOngoing(false);
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(666, mBuilder.build());
         onDestroy();

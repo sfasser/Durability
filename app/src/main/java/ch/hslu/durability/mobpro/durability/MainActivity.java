@@ -1,14 +1,11 @@
 package ch.hslu.durability.mobpro.durability;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -56,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 String name = nameTextView.getText().toString();
                 String date = dateTextView.getText().toString();
 
+
                 Intent modify_intent = new Intent(getApplicationContext(), DetailActivity.class);
                 modify_intent.putExtra("name", name);
                 modify_intent.putExtra("date", date);
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Löschen");
-                builder.setMessage("Wollen Sie den Eintrag löschen ?");
+                builder.setMessage("Haben Sie das Produkt verbraucht? Wollen Sie das Produkt löschen?");
                 builder.setIcon(R.drawable.ic_delete_forever_black_24dp);
                 builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

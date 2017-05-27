@@ -39,8 +39,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import static ch.hslu.durability.mobpro.durability.R.id.id;
-
 public class AddActivity extends Activity implements OnClickListener {
 
     private FloatingActionButton addButton;
@@ -83,8 +81,6 @@ public class AddActivity extends Activity implements OnClickListener {
         month_x = cal.get(Calendar.MONTH);
         day_x = cal.get(Calendar.DAY_OF_MONTH);
 
-
-
         showDialogOnButtonClick();
     }
 
@@ -114,7 +110,7 @@ public class AddActivity extends Activity implements OnClickListener {
             cal.set(Calendar.DATE, cur_cal.get(Calendar.DATE));
             cal.set(Calendar.MONTH, cur_cal.get(Calendar.MONTH));
             Intent intent = new Intent(this, NotificationService.class);
-            PendingIntent pintent = PendingIntent.getService(this, 0, intent, 0);
+            PendingIntent pintent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             AlarmManager alarm = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
             alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pintent);
 
