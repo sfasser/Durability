@@ -8,10 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import static ch.hslu.durability.mobpro.durability.DatabaseHandler.KEY_DATE;
 
-/**
- * Created by Sandro Fasser on 24.05.2017.
- */
-
 public class DBManager {
 
     private DatabaseHandler dbHandler;
@@ -45,7 +41,7 @@ public class DBManager {
 
     public Cursor fetch() {
         String[] columns = new String[] { DatabaseHandler.KEY_ID, DatabaseHandler.KEY_NAME, KEY_DATE };
-        Cursor cursor = database.query(DatabaseHandler.TABLE_PRODUCTS, columns, null, null, null, null, KEY_DATE +" ASC");
+        Cursor cursor = database.query(DatabaseHandler.TABLE_PRODUCTS, columns, null, null, null, null, KEY_DATE + " ASC");
         if (cursor != null) {
             cursor.moveToFirst();
         }

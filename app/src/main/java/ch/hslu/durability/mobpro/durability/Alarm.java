@@ -10,10 +10,6 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-/**
- * Created by Sandro Fasser on 26.05.2017.
- */
-
 public class Alarm extends BroadcastReceiver
 {
     @Override
