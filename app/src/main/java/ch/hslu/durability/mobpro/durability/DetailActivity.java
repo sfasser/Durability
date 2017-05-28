@@ -83,8 +83,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         month_x = cal.get(Calendar.MONTH);
         day_x = cal.get(Calendar.DAY_OF_MONTH);
 
-
-
         showDialogOnButtonClick();
     }
 
@@ -119,7 +117,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     "No scan data received!", Toast.LENGTH_SHORT);
             toast.show();
         }
-
     }
 
     private void searchBarcode(String scanContent) {

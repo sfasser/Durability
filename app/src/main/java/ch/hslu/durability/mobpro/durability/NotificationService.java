@@ -11,6 +11,11 @@ import android.util.Log;
 
 import static android.content.ContentValues.TAG;
 
+/*
+Diese Klasse wurde für die Notification erstellt.
+Da sich diese aber noch in der Testphase befindet, wird diese Klasse zur Zeit nicht verwendet.
+ */
+
 public class NotificationService extends Service {
 
     //Alarm alarm = new Alarm();
@@ -33,7 +38,6 @@ public class NotificationService extends Service {
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "Service destroyed");
-        //Toast.makeText(this, "Alarm zerstört !!!!!!!!!!", Toast.LENGTH_LONG).show(); // For example
     }
 
     public void Notifi(Context context, String Nachricht){

@@ -1,16 +1,12 @@
 package ch.hslu.durability.mobpro.durability;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.icu.util.Calendar;
-import android.icu.util.GregorianCalendar;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
@@ -94,10 +90,19 @@ public class AddActivity extends Activity implements OnClickListener {
         if(v.getId()==R.id.btnSave) {
             final String name = txtProduct.getText().toString();
             final String date = txtdate.getText().toString();
-
+            /*
+            Versuch Datum einzeln zu speichern, damit die Sortierung einfach wird.
+            Wurde aus Zeitgründen aber wieder verworfen.
+            String day = date.split("\\.")[0];
+            String month = date.split("\\.")[1];
+            String year = date.split("\\.")[2];
+            final String dbdate = year + "-" + month + "-" + day;
+            */
             dbManager.insert(name, date);
 
-            //für alarm -> Nach dem eifügen soll ein Alarm gestellt werden
+            /*
+            Code für die Notification.
+            Notification an sich funktioniert, aber nicht abgestimmt auf die einzelnen Produkte, bzw. deren Mindesthaltbarkeitsdatum.
             Calendar cur_cal = new GregorianCalendar();
             cur_cal.setTimeInMillis(System.currentTimeMillis());//set the current time and date for this calendar
 
@@ -113,8 +118,7 @@ public class AddActivity extends Activity implements OnClickListener {
             PendingIntent pintent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             AlarmManager alarm = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
             alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 30*1000, pintent);
-
-
+            */
 
             Intent main = new Intent(AddActivity.this, MainActivity.class)
                     .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

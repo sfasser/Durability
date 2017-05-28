@@ -96,13 +96,11 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
 
-
                 return true;
             }
         });
 
         startService(new Intent(this, NotificationService.class));
-
     }
 
     public void StartAddActivity(View Button) {

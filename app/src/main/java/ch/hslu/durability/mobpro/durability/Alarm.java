@@ -10,6 +10,11 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+/*
+Diese Klasse wurde für die Notification erstellt.
+Da sich diese aber noch in der Testphase befindet, wird diese Klasse zur Zeit nicht verwendet.
+ */
+
 public class Alarm extends BroadcastReceiver
 {
     @Override

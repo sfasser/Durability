@@ -28,8 +28,6 @@ public class DatabaseHandler extends SQLiteOpenHelper{
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT NOT NULL,"
                 + KEY_DATE + " TEXT" + ")";
         db.execSQL(CREATE_PRODUCTS_TABLE);
-/*        String INSERT_PRODUCTS = "INSERT INTO " + TABLE_PRODUCTS + "(" + KEY_NAME + ", " + KEY_DATE + ") VALUES ('Testproduct1', '240517')";
-        db.execSQL(INSERT_PRODUCTS);*/
     }
 
     // Upgrading database
